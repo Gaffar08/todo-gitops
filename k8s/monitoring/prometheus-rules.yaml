@@ -1,0 +1,37 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+
+metadata:
+  name: todo-app-alerts
+  namespace: monitoring
+  labels:
+    release: monitoring-stack
+
+spec:
+  groups:
+  - name: todo-app.rules
+    rules:
+
+    - alert: BackendDeploymentDown
+      expr: kube_deployment_status_replicas_available{deployment="backend",namespace="todo-app"} < 1
+      for: 1m
+
+      labels:
+        severity: critical
+        team: todo-app
+        namespace: monitoring
+      annotations:
+        summary: "Backend Deployment Down"
+        description: "No backend replicas are available."
+
+    - alert: FrontendDeploymentDown
+      expr: kube_deployment_status_replicas_available{deployment="frontend",namespace="todo-app"} < 1
+      for: 1m
+
+      labels:
+        severity: critical
+        team: todo-app
+        namespace: monitoring
+      annotations:
+        summary: "Frontend Deployment Down"
+        description: "No frontend replicas are available."
