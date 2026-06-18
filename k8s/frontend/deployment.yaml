@@ -21,7 +21,7 @@ spec:
       containers:
         - name: frontend
 
-          image: gaffar08/todo-frontend:v1.0.113-975d0f2
+          image: gaffar08/todo-frontend:v1.0.120-2df25b4
 
           imagePullPolicy: Always
 
