@@ -23,7 +23,7 @@ spec:
       containers:
         - name: backend
 
-          image: gaffar08/todo-backend:v1.0.122-729666b
+          image: gaffar08/todo-backend:v1.0.124-ada557e
 
           imagePullPolicy: Always
 
