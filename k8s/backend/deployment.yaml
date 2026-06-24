@@ -18,10 +18,12 @@ spec:
         app: backend
 
     spec:
+      serviceAccountName: backend-sa
+
       containers:
         - name: backend
 
-          image: gaffar08/todo-backend:v1.0.119-2df25b4
+          image: gaffar08/todo-backend:v1.0.0
 
           imagePullPolicy: Always
 
@@ -31,9 +33,6 @@ spec:
           envFrom:
             - configMapRef:
                 name: backend-config
-
-            - secretRef:
-                name: backend-secret
 
           resources:
             requests:
